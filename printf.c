@@ -12,8 +12,10 @@ int _printf(const char *format, ...)
         int x = 0;
         int sum = 0;
         char y;
+	int num;
         int i;
         char *str;
+	char array[10];
         va_list args;
 
         /**
@@ -65,6 +67,41 @@ int _printf(const char *format, ...)
                                         sum++;
                                 }
                         }
+			else if ((format[x] == 'd') || (format[x] == 'i'))
+			{
+				num = va_arg(args, int);
+				if (num < 0)
+				{
+					write(1, "-", 1);
+					num = -num;
+					sum++;
+				}
+				if (num < 10)
+				{
+					_putchar(num + '0');
+					sum++;
+				}
+				if (num >= 10)
+				{
+					i = 0;
+					while (num >= 10)
+					{
+						array[i] = num % 10;
+						num = num / 10;
+						i++;
+						if (num < 10)
+						{
+							array[i] = num;
+						}	
+					}
+					while (i >= 0)
+					{
+						_putchar(array[i] + '0');
+						i--;
+						sum++;
+					}
+				}
+			}
                         else
                         {
                                 _putchar('%');
