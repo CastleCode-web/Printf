@@ -17,9 +17,9 @@ int _printf(const char *format, ...)
 	char *str;
 	char array[10];
 	va_list args;
-        /**
-         * If no strings or argument is passed, return error
-         */
+	/**
+	 * If no strings or argument is passed, return error
+	 */
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
@@ -28,11 +28,11 @@ int _printf(const char *format, ...)
 		if (format[x] == '%')
 		{
 			x++;
-                        /**
-                         * checks if the element/character after % is the
-                         * terminating null byte (\0). The break ensures
-                         * that a user passes a specifier after %
-                         */
+			/**
+			 * checks if the element/character after % is the
+			 * terminating null byte (\0). The break ensures
+			 * that a user passes a specifier after %
+			 */
 			if (format[x] == '\0')
 				break;
 			if (format[x] == '%')
@@ -42,10 +42,10 @@ int _printf(const char *format, ...)
 			}
 			else if (format[x] == 'c')
 			{
-                                /**
-                                 * va_arg doesn't accept char as argument,
-                                 * so it's casted
-                                 */
+				/**
+				 * va_arg doesn't accept char as argument,
+				 * so it's casted
+				 */
 				y = (char)va_arg(args, int);
 				write(1, &y, 1);
 				sum++;
@@ -53,11 +53,11 @@ int _printf(const char *format, ...)
 			else if (format[x] == 's')
 			{
 				str = va_arg(args, char *);
-                                /**
-                                 * Checks if str points to NULL, and replaces
-                                 * it with string literals (nill) instead.
-                                 * Note that "NULL" in quotes is seen as string
-                                 */
+				/**
+				 * Checks if str points to NULL, and replaces
+				 * it with string literals (nill) instead.
+				 * Note that "NULL" in quotes is seen as string
+				 */
 				if (str == NULL)
 					str = ("nill");
 				for (i = 0; str[i] != '\0'; i++)
