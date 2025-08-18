@@ -40,6 +40,7 @@ int main(void)
 	_printf("Len with i: [%i]\n",7);
 	printf("Len with i: [%i]\n", INT_MIN);
 	printf("Len with i: [%i]\n", 7);
+	_printf("%b\n", 98);
 
         return (0);
 }

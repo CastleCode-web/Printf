@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "main.h"
+#include <stdlib.h>
 /**
  * _printf - prints to standard output
  * @format - string to print
@@ -17,6 +18,7 @@ int _printf(const char *format, ...)
 	char *str;
 	char array[10];
 	unsigned int unsigned_val;
+	char binary[32];
 	va_list args;
 	/**
 	 * If no strings or argument is passed, return error
@@ -101,6 +103,31 @@ int _printf(const char *format, ...)
 				while (i >= 0)
 				{
 					_putchar(array[i] + '0');
+					i--;
+					sum++;
+				}
+			}
+			else if (format[x] == 'b')
+			{
+				num = va_arg(args, unsigned int);
+				if (num == 0)
+				{
+					x++;
+					_putchar('0');
+					sum++;
+					continue;
+				}
+				i = 0;
+				while (num > 2)
+				{
+					binary[i] = num % 2;
+					num = num / 2;
+					i++;
+				}
+				binary[i] = num;
+				while (i >= 0)
+				{
+					_putchar(binary[i] + '0');
 					i--;
 					sum++;
 				}
