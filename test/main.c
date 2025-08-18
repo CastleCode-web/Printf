@@ -32,14 +32,14 @@ int main(void)
         _printf("%s\n", "NULL");
         printf("%s\n", "NULL");
         _printf("%s\n", NULL);
-	_printf("Len with d: [%d]\n", 222222222);
-	_printf("Len with d: [%d]\n", -222222222);
-	printf("Len with d: [%d]\n", 222222222);
-	printf("Len with d: [%d]\n", -222222222);
-	_printf("Len with i: [%i]\n", 222222222);
-	_printf("Len with i: [%i]\n",-222222222);
-	printf("Len with i: [%i]\n", 222222222);
-	printf("Len with i: [%i]\n", -222222222);
+	_printf("Len with d: [%d]\n", INT_MIN);
+	_printf("Len with d: [%d]\n", 7);
+	printf("Len with d: [%d]\n", INT_MIN);
+	printf("Len with d: [%d]\n", 7);
+	_printf("Len with i: [%i]\n", INT_MIN);
+	_printf("Len with i: [%i]\n",7);
+	printf("Len with i: [%i]\n", INT_MIN);
+	printf("Len with i: [%i]\n", 7);
 
         return (0);
 }
