@@ -16,6 +16,7 @@ int _printf(const char *format, ...)
 	int i;
 	char *str;
 	char array[10];
+	unsigned int unsigned_val;
 	va_list args;
 	/**
 	 * If no strings or argument is passed, return error
@@ -69,36 +70,39 @@ int _printf(const char *format, ...)
 			else if ((format[x] == 'd') || (format[x] == 'i'))
 			{
 				num = va_arg(args, int);
+				/**
+				* This casting takes care of INT_MIN.
+				* Because the min value, (-2147483648)
+				* can't fit into an int. You either
+				* promote it as long or directly cast
+				* to unsigned int to get the correct
+				* binary representation
+				*/
+				unsigned_val = (num < 0) ? (unsigned int)(-((long)num)) : (unsigned int)num;
 				if (num < 0)
 				{
-					write(1, "-", 1);
-					num = -num;
+					_putchar('-');
 					sum++;
 				}
-				if (num < 10)
+				else if (num == 0)
 				{
-					_putchar(num + '0');
+					_putchar('0');
 					sum++;
+					continue;
 				}
-				if (num >= 10)
+				i = 0;
+				while (unsigned_val >= 10)
 				{
-					i = 0;
-					while (num >= 10)
-					{
-						array[i] = num % 10;
-						num = num / 10;
-						i++;
-						if (num < 10)
-						{
-							array[i] = num;
-						}	
-					}
-					while (i >= 0)
-					{
-						_putchar(array[i] + '0');
-						i--;
-						sum++;
-					}
+					array[i] = unsigned_val % 10;
+					unsigned_val = unsigned_val / 10;
+					i++;
+				}
+				array[i] = unsigned_val;
+				while (i >= 0)
+				{
+					_putchar(array[i] + '0');
+					i--;
+					sum++;
 				}
 			}
 			else
