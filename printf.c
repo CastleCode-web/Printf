@@ -16,8 +16,7 @@ int _printf(const char *format, ...)
 	int num;
 	int i;
 	char *str;
-	char array[10];
-	char arrU[11];
+	char array[11];
 	unsigned int unsigned_val;
 	char binary[32];
 	va_list args;
@@ -145,14 +144,14 @@ int _printf(const char *format, ...)
 				i = 0;
 				while (unsigned_val >= 10)
 				{
-					arrU[i] = unsigned_val % 10;
+					array[i] = unsigned_val % 10;
 					unsigned_val = unsigned_val / 10;
 					i++;
 				}
-				arrU[i] = unsigned_val;
+				array[i] = unsigned_val;
 				while (i >= 0)
 				{
-					_putchar(arrU[i] + '0');
+					_putchar(array[i] + '0');
 					i--;
 					sum++;
 				}
