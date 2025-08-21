@@ -23,8 +23,8 @@ int main(void)
         printf("Character: [%c] House\n", 'H');
         _printf("String:[%s]\n", "I am a string !");
         printf("String:[%s]\n", "I am a string !");
-        _printf("No percentage: %z, %v, %c, %s\n", 'A', "Feyi");
-        printf("No percentage: %v, %v, %c, %s\n", 'A', "Feyi");
+        _printf("No percentage: %j, %v, %c, %s\n", 'A', "Feyi");
+        printf("No percentage: %j, %v, %c, %s\n", 'A', "Feyi");
         _printf(NULL);
         printf(NULL);
         _printf("Sheeda %");
@@ -41,6 +41,8 @@ int main(void)
 	printf("Len with i: [%i]\n", INT_MIN);
 	printf("Len with i: [%i]\n", 7);
 	_printf("%b\n", 98);
+	_printf("Unsigned int: [%u]\n", (UINT_MAX + 1024));
+	printf("Unsigned int: [%u]\n", (UINT_MAX + 1024));
 
         return (0);
 }
