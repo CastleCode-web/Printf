@@ -43,6 +43,8 @@ int main(void)
 	_printf("%b\n", 98);
 	_printf("Unsigned int: [%u]\n", (UINT_MAX + 1024));
 	printf("Unsigned int: [%u]\n", (UINT_MAX + 1024));
+	_printf("Unsigned octal:[%o]\n", 10);
+	printf("Unsigned octal:[%o]\n", 10);
 
         return (0);
 }

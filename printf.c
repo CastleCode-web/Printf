@@ -156,6 +156,30 @@ int _printf(const char *format, ...)
 					sum++;
 				}
 			}
+			else if (format[x] == 'o')
+			{
+				unsigned_val = va_arg(args, unsigned int);
+				if (unsigned_val == 0)
+				{
+					_putchar('0');
+					sum++;
+					continue;
+				}
+				i = 0;
+				while (unsigned_val >= 8)
+				{
+					array[i] = unsigned_val % 8;
+					unsigned_val = unsigned_val / 8;
+					i++;
+				}
+				array[i] = unsigned_val;
+				while (i >= 0)
+				{
+					_putchar(array[i] + '0');
+					i--;
+					sum++;
+				}
+			}
 			else
 			{
 				_putchar('%');
